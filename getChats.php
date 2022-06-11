@@ -24,7 +24,7 @@
 	$checkUser ="SELECT * FROM chats 
                  WHERE (from_id ='$from_id' AND to_id = '$to_id') 
                  OR (from_id ='$to_id' AND to_id = '$from_id') 
-                 ORDER BY id DESC";
+                 ORDER BY id ASC";
     
 	// $checkUser ="SELECT * FROM chats WHERE (from_id ='$from_id' and to_id = '$to_id')  ORDER BY id ASC ";
 	$result = mysqli_query($con,$checkUser);
