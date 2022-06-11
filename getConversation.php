@@ -40,7 +40,7 @@
     }
 
     foreach($response as $res){
-        $getUser ="SELECT * FROM users WHERE id = '$res' ";
+        $getUser ="SELECT id, name, picture, is_active, last_seen FROM users WHERE id = '$res' ";
 
         $userData = mysqli_query($con,$getUser);
 
@@ -49,11 +49,13 @@
         array_push($userDetail, $resultData);
     }
 
-    echo json_encode($userDetail, JSON_PRETTY_PRINT);
+    $final_array = array_unique($userDetail);
+    echo json_encode($final_array, JSON_PRETTY_PRINT);
+
+    
+    // echo json_encode($userDetail, JSON_PRETTY_PRINT);
     // echo json_encode($response, JSON_PRETTY_PRINT);
 
     //Without Duplicate
-    // $final_array = array_unique($userDetail);
-    // echo json_encode($final_array, JSON_PRETTY_PRINT);
 
  ?>
