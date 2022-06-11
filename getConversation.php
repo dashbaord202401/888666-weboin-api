@@ -40,7 +40,7 @@
     }
 
     foreach($response as $res){
-        $getUser ="SELECT id, name, picture, is_active, last_seen FROM users WHERE id = '$res' ";
+        $getUser ="SELECT id, name, pic, is_active, last_seen FROM users WHERE id = '$res' ";
 
         $userData = mysqli_query($con,$getUser);
 
