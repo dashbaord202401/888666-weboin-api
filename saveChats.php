@@ -21,13 +21,12 @@
 	$to_id = $_POST['to_id'];
 	$msg = $_POST['msg'];
 	$time = $_POST['time'];
-	$sent_by = $_POST['sent_by'];
 	$attachment = $_POST['attachment'];
 	$attachment_type = $_POST['attachment_type'];
 
 
 	
-		$insert = "INSERT INTO chats(from_id,to_id,msg_text,time,attachment,attachment_type,sent_by) VALUES('$from_id','$to_id','$msg','$time', '$attachment','$attachment_type','$sent_by')";
+		$insert = "INSERT INTO chats(from_id,to_id,msg_text,time,attachment,attachment_type) VALUES('$from_id','$to_id','$msg','$time', '$attachment','$attachment_type')";
 		$result=mysqli_query($con,$insert);
 		$getId = mysqli_insert_id($con);
 		$chat = "SELECT * FROM chats WHERE id='$getId'";
@@ -40,7 +39,6 @@
 			"to_id" => $row[2],
 			"msg" => $row[3],
 			"created_at" => $row[4],
-			"sent_by" => $row[7]
 		];
 		$response = array(
 			"status" => "success",
