@@ -38,7 +38,7 @@
 			"from_id" => $row[1],
 			"to_id" => $row[2],
 			"msg" => $row[3],
-			"created_at" => $row[4],
+			"created_at" => $row[4]
 		];
 		$response = array(
 			"status" => "success",
