@@ -33,19 +33,39 @@ class Chat implements MessageComponentInterface
         $fromUser = $new_msg->from;
 
         if($type == "new") { // new connection
-            
+            //print_r("new : ", $this->activeUsers);
             $this->activeUsers[$fromUser] = $from;
+
+            
+            //print_r("old : ",$this->activeUsers);
+
+            if(in_array($from,$this->activeUsers)){
+                print_r("existing");
+            }
             
         } else {
             $data = $new_msg->data;
             $toUser = $new_msg->to;
             
-            echo "to: $toUser";
+            echo "to user_id : $toUser";
 
             echo " msg body : $data";
-         
-            $this->activeUsers[$toUser]->send(json_encode($new_msg));
-           
+
+            try{
+                if($this->activeUsers[$toUser]==true)
+                {
+
+                    $this->activeUsers[$toUser]->send(json_encode($new_msg));
+                }
+                else
+                {
+                    print_r("connection not available");
+                }
+            }
+            catch(Exception $e)
+            {
+                print_r("err : ",$e->getMessage());
+            }  
         }        
     }
 
