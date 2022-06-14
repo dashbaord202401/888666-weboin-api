@@ -17,9 +17,9 @@
         exit();
     }
 
-	$phone = $_POST['phone'];
+	$name = $_POST['name'];
 
-	$checkUser ="SELECT * FROM users WHERE phone LIKE '$phone%'";
+	$checkUser ="SELECT * FROM users WHERE name LIKE '$name%'";
 	$result = mysqli_query($con,$checkUser);
 
     if(mysqli_num_rows($result)>0)

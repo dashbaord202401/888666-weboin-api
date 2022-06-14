@@ -5,6 +5,7 @@ use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use ChatApp\Chat;
+try {
 $server = IoServer ::factory(
     new HttpServer(
         new WsServer(
@@ -15,5 +16,10 @@ $server = IoServer ::factory(
 );
 
 $server->run();
+}
+catch(Exception $e)
+{
+    echo 'Message : '.$e->getMessage();
+}
 
 ?>

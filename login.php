@@ -29,7 +29,8 @@
     
         $data = [
             "id" => (int) $row[0],
-            "phone" => $row[2]
+            "phone" => $row[2],
+            "name" => $row[1]
         ];
         $response = array(
             "status" => "success",

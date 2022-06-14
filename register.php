@@ -19,7 +19,7 @@
 
 	$phone = $_POST['phone'];
 	$password = $_POST['password'];
-	$name = "user@$phone";
+	$name = $_POST['name'];
 
 	$checkPhone = "SELECT * FROM users WHERE phone='$phone'";
 	$checkQueryPhone = mysqli_query($con,$checkPhone);

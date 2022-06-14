@@ -15,10 +15,11 @@ class Database{
 
         // if($this->apiUsername == $authUsername && $this->apiPassword == $authPassword){
 
-            $this->conn = new mysqli("localhost:3306", "root", "root", "web");
+            $this->conn = new mysqli("localhost:3308", "root", "", "weboin");
             return $this->conn;
 
         // }
         return null;
     }
 }
+?>
