@@ -1,6 +1,6 @@
 <?php
 
-    header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
 
     include_once 'database.php';
@@ -20,31 +20,36 @@
 
 	$from_id = $_POST['from_id'];
     
-	$checkUser ="SELECT `to` FROM conversations WHERE (`from` ='$from_id') ORDER BY id DESC";
+	$checkUser ="SELECT `to`, last_msg, `time` FROM conversations WHERE (`from` ='$from_id') ORDER BY `time` DESC";
 
     
 	$result = mysqli_query($con,$checkUser);
-
-
-  foreach($result as $key => $val){
-    array_push($response, $val["to"]);
-  }
-    
-  foreach($response as $res)
-  {
-      $getUser ="SELECT id, name, picture, is_active, last_seen FROM users WHERE (`id` = '$res')";
-
-      $userData = mysqli_query($con,$getUser);
-
-      $resultData = $userData -> fetch_row();
-
-      array_push($userDetail, $resultData);
-  }
-
-  $data = [
-    "list" => $userDetail
-    ];
   
-  echo json_encode($data, JSON_PRETTY_PRINT);
+  $response_data = [];
+
+foreach($result as $key => $val){
+  $to_id = $val["to"];
+  
+  $finalResult=new stdClass;
+  $finalResult->to=$to_id;
+  $finalResult->last_msg=$val["last_msg"];
+  $finalResult->time=$val["time"];
+  
+  $getUser ="SELECT id, name, picture, is_active, last_seen FROM users WHERE (`id` = '$to_id')";
+  
+  $userData = mysqli_query($con,$getUser);
+  foreach($userData as $keys => $value){
+  
+    $finalResult->name=$value["name"];
+    $finalResult->picture=$value["picture"];
+    $finalResult->is_active=$value["is_active"];
+    $finalResult->last_seen=$value["last_seen"];
+  }
+  
+  array_push($response_data, $finalResult);
+  
+  }
+
+  echo json_encode($response_data, JSON_PRETTY_PRINT);
 
  ?>

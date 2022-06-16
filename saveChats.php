@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
 
@@ -27,13 +29,30 @@
 
 	
 		$insert = "INSERT INTO chats(from_id,to_id,msg_text,time,attachment,attachment_type) VALUES('$from_id','$to_id','$msg','$time', '$attachment','$attachment_type')";
+<<<<<<< HEAD
 		
+=======
+		$update1 = "UPDATE conversations SET `last_msg` = '$msg' WHERE `from` = $from_id AND `to` =$to_id  ";
+		$update2 = "UPDATE conversations SET `last_msg` = '$msg' WHERE `from` = $to_id AND `to` =$from_id   ";
+>>>>>>> 5989dff563667b3d45eeedbb431a483d0512e246
 		$result=mysqli_query($con,$insert);
 		$getId = mysqli_insert_id($con);
+		$update_result1=mysqli_query($con,$update1);
+		$update_result2=mysqli_query($con,$update2);
 		$chat = "SELECT * FROM chats WHERE id='$getId'";
 		$getChat = mysqli_query($con,$chat);
 		$row = $getChat -> fetch_row();
-
+		if($result){
+			echo "Chat Saved \n";
+		}
+		if($update_result1){
+			echo "update_result1 Saved \n";
+		}
+		if($update_result2){
+			echo "update_result2 Saved \n";
+		}
+	
+		
 		$data = [
 			"id" => (int) $row[0],
 			"from_id" => $row[1],
