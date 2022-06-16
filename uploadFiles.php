@@ -63,16 +63,13 @@
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-<<<<<<< HEAD
         $data = [
           "status" => "success",
           "path" => "".htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]))
           ];
         
         echo json_encode($data, JSON_PRETTY_PRINT);
-=======
         echo "The file ".$target_file. " has been uploaded.";
->>>>>>> 5989dff563667b3d45eeedbb431a483d0512e246
       } else {
         $data = [
           "status" => "failure",

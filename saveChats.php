@@ -29,12 +29,10 @@ use LDAP\Result;
 
 	
 		$insert = "INSERT INTO chats(from_id,to_id,msg_text,time,attachment,attachment_type) VALUES('$from_id','$to_id','$msg','$time', '$attachment','$attachment_type')";
-<<<<<<< HEAD
-		
-=======
+
 		$update1 = "UPDATE conversations SET `last_msg` = '$msg' WHERE `from` = $from_id AND `to` =$to_id  ";
 		$update2 = "UPDATE conversations SET `last_msg` = '$msg' WHERE `from` = $to_id AND `to` =$from_id   ";
->>>>>>> 5989dff563667b3d45eeedbb431a483d0512e246
+
 		$result=mysqli_query($con,$insert);
 		$getId = mysqli_insert_id($con);
 		$update_result1=mysqli_query($con,$update1);

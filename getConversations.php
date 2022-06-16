@@ -50,6 +50,10 @@ foreach($result as $key => $val){
   
   }
 
-  echo json_encode($response_data, JSON_PRETTY_PRINT);
+  $data = [
+    "list" => $response_data
+    ];
+
+  echo json_encode($data, JSON_PRETTY_PRINT);
 
  ?>
