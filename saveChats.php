@@ -47,7 +47,7 @@ use LDAP\Result;
 		if($update_result2){
 			echo "update_result2 Saved \n";
 		}
-		// 
+	
 		
 		$data = [
 			"id" => (int) $row[0],
