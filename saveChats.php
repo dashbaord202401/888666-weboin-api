@@ -41,13 +41,13 @@ use LDAP\Result;
 		$getChat = mysqli_query($con,$chat);
 		$row = $getChat -> fetch_row();
 		if($result){
-			echo "Chat Saved \n";
+			//echo "Chat Saved \n";
 		}
 		if($update_result1){
-			echo "update_result1 Saved \n";
+			//echo "update_result1 Saved \n";
 		}
 		if($update_result2){
-			echo "update_result2 Saved \n";
+			//echo "update_result2 Saved \n";
 		}
 	
 		

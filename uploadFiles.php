@@ -20,7 +20,8 @@
 
 
     $curret_time =time();
-    echo $curret_time."\n";
+    
+    //echo $curret_time."\n";
     $target_dir = "uploads/";
     $target_file = $target_dir . basename("FILE".$curret_time.$_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
@@ -53,23 +54,35 @@
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" && $imageFileType != "mp4" ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $data = [
+        "status" => "failure"
+        ];
+
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        
+      // "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
       $uploadOk = 0;
     }
     
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-      echo "Sorry, your file was not uploaded.";
+
+      $data = [
+        "status" => "failure"
+        ];
+
+        echo json_encode($data, JSON_PRETTY_PRINT);
+      
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         $data = [
           "status" => "success",
-          "path" => "".htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]))
+          "path" => "".htmlspecialchars( basename("FILE".$curret_time.$_FILES["fileToUpload"]["name"]))
           ];
         
         echo json_encode($data, JSON_PRETTY_PRINT);
-        echo "The file ".$target_file. " has been uploaded.";
+        // "The file ".$target_file. " has been uploaded."
       } else {
         $data = [
           "status" => "failure",
@@ -77,7 +90,7 @@
           ];
         
         echo json_encode($data, JSON_PRETTY_PRINT);
-        //echo "Sorry, there was an error uploading your file.";
+        
       }
     }
 
