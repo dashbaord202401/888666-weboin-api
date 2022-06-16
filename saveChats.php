@@ -27,6 +27,7 @@
 
 	
 		$insert = "INSERT INTO chats(from_id,to_id,msg_text,time,attachment,attachment_type) VALUES('$from_id','$to_id','$msg','$time', '$attachment','$attachment_type')";
+		
 		$result=mysqli_query($con,$insert);
 		$getId = mysqli_insert_id($con);
 		$chat = "SELECT * FROM chats WHERE id='$getId'";
