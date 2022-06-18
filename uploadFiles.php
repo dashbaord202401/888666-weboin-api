@@ -52,17 +52,21 @@
     // }
     
     // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" && $imageFileType != "mp4" ) {
-      $data = [
-        "status" => "failure"
-        ];
 
-        echo json_encode($data, JSON_PRETTY_PRINT);
-        
-      // "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-      $uploadOk = 0;
-    }
+
+    // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    // && $imageFileType != "gif" && $imageFileType != "mp4" ) {
+    //   $data = [
+    //     "status" => "failure"
+    //     ];
+
+    //     echo json_encode($data, JSON_PRETTY_PRINT);
+
+    //   // "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    //   $uploadOk = 0;
+    // }
+
+
     
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
@@ -74,7 +78,9 @@
         echo json_encode($data, JSON_PRETTY_PRINT);
       
     // if everything is ok, try to upload file
-    } else {
+    } 
+    else
+    {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         $data = [
           "status" => "success",
@@ -82,7 +88,7 @@
           ];
         
         echo json_encode($data, JSON_PRETTY_PRINT);
-        // "The file ".$target_file. " has been uploaded."
+        
       } else {
         $data = [
           "status" => "failure",
