@@ -45,10 +45,10 @@
     //   $uploadOk = 0;
     // }
     
-    // // Check file size
-    // if ($_FILES["fileToUpload"]["size"] > 5000000000000) {
-    //   echo "Sorry, your file is too large.";
-    //   $uploadOk = 0;
+     // Check file size
+    // if ($_FILES["fileToUpload"]["size"] > 50) {
+      // echo "Sorry, your file is too large.";
+      // $uploadOk = 0;
     // }
     
     // Allow certain file formats
@@ -66,7 +66,7 @@
     //   $uploadOk = 0;
     // }
 
-
+    
     
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
@@ -88,7 +88,7 @@
           ];
         
         echo json_encode($data, JSON_PRETTY_PRINT);
-        
+        // "The file ".$target_file. " has been uploaded."
       } else {
         $data = [
           "status" => "failure",

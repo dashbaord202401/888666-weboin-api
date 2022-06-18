@@ -1,7 +1,6 @@
 <?php
 namespace ChatApp;
-// include("../db/chat_table.php");
-// require (__DIR__."/../db/active_users.php");
+
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 class Chat implements MessageComponentInterface
