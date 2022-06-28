@@ -8,7 +8,9 @@ class Database{
     // get the database connection
     public function getConnection(): ?mysqli
     {
+        //  Production
         $this->conn = new mysqli("localhost:3306", "adminuser1", "6392RND8Cuxt", "weboin");
+        //  Development
         // $this->conn = new mysqli("localhost", "root", "root", "web");
         return $this->conn;
     }
